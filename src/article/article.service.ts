@@ -11,13 +11,18 @@ export class ArticleService {
     private articleModel: Model<Article>,
   ) {}
 
-  async createArticle(dto: CreateArticleDto): Promise<Article> {
+  async createArticle(dto: CreateArticleDto): Promise<Article[]> {
+    console.log('article', dto);
     const article = await this.articleModel.create(dto);
+    console.log(article);
     return article;
   }
 
   async getAllArticles(): Promise<Article[]> {
-    return await this.articleModel.find();
+    console.log('get');
+    const articles = await this.articleModel.find();
+    console.log(articles);
+    return articles;
   }
 
   async getArticleById(id: string): Promise<Article> {

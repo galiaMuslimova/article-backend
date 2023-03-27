@@ -11,11 +11,13 @@ export class ArticleController {
     @Body()
     dto: CreateArticleDto,
   ) {
+    console.log('article', dto);
     return this.articleService.createArticle(dto);
   }
 
   @Get()
   getAllArticles() {
+    console.log('article', 'get');
     return this.articleService.getAllArticles();
   }
 
@@ -24,6 +26,7 @@ export class ArticleController {
     @Param('id')
     id: string,
   ) {
+    console.log('article', id);
     return this.articleService.getArticleById(id);
   }
 }
