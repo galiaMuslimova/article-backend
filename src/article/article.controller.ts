@@ -7,26 +7,17 @@ export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
   @Post()
-  createArticle(
-    @Body()
-    dto: CreateArticleDto,
-  ) {
-    console.log('article', dto);
+  createArticle(@Body() dto: CreateArticleDto) {
     return this.articleService.createArticle(dto);
   }
 
   @Get()
   getAllArticles() {
-    console.log('article', 'get');
     return this.articleService.getAllArticles();
   }
 
   @Get(':id')
-  getArticleById(
-    @Param('id')
-    id: string,
-  ) {
-    console.log('article', id);
+  getArticleById(@Param('id') id: string) {
     return this.articleService.getArticleById(id);
   }
 }

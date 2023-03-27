@@ -7,21 +7,16 @@ import { Article } from './schemas/article.schema';
 @Injectable()
 export class ArticleService {
   constructor(
-    @InjectModel(Article.name)
-    private articleModel: Model<Article>,
+    @InjectModel(Article.name) private articleModel: Model<Article>,
   ) {}
 
-  async createArticle(dto: CreateArticleDto): Promise<Article[]> {
-    console.log('article', dto);
+  async createArticle(dto: CreateArticleDto): Promise<Article> {
     const article = await this.articleModel.create(dto);
-    console.log(article);
     return article;
   }
 
   async getAllArticles(): Promise<Article[]> {
-    console.log('get');
     const articles = await this.articleModel.find();
-    console.log(articles);
     return articles;
   }
 
